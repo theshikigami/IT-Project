@@ -1,0 +1,19 @@
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2980b9;
+  --text-color: #f0f0f0;
+  --light-text: #aaa;
+  --bg-color: #121212;
+  --card-bg: #1e1e1e;
+  --border-color: #333;
+}
+
+.main-footer {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+  border-top: 1px solid #333;
+}
+
+.main-footer a { color: #b3b3b3; }
+.main-footer a:hover { color: white; }
+.footer-bottom { border-top: 1px solid #333; }

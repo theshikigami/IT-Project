@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Listings - AutoHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/theme-light.css" id="theme-style">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Auto<span>Hub</span></a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="listings.html" class="active">Browse Cars</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="theme-switcher">
+                    <button data-theme="light"><i class="fas fa-sun"></i></button>
+                    <button data-theme="dark"><i class="fas fa-moon"></i></button>
+                </div>
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="register.html" class="btn btn-primary">Register</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="listings-page">
+        <div class="container">
+            <h1 class="section-title">Available Cars</h1>
+
+            <div class="cars-grid">
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/listings.js"></script>
+    <script src="js/theme-switcher.js"></script>
+</body>
+</html>

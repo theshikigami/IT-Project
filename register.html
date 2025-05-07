@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - AutoHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/theme-light.css" id="theme-style">
+</head>
+<body>
+    <!-- Header (Same as login.html) -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Auto<span>Hub</span></a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="listings.html">Browse Cars</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+                <div class="theme-switcher">
+                    <button data-theme="light"><i class="fas fa-sun"></i></button>
+                    <button data-theme="dark"><i class="fas fa-moon"></i></button>
+                </div>
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="register.html" class="btn btn-primary">Register</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Registration Form Section -->
+    <main class="auth-page">
+        <div class="container">
+            <div class="auth-form-container">
+                <h2>Create Your Account</h2>
+                
+                <form class="auth-form" id="register-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="first-name">First Name</label>
+                            <input type="text" id="first-name" name="first_name" required>
+                            <div class="error-message">Please enter your first name</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="last-name">Last Name</label>
+                            <input type="text" id="last-name" name="last_name" required>
+                            <div class="error-message">Please enter your last name</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                        <div class="error-message">Please enter a valid email address</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" pattern="[0-9]{10,15}">
+                        <div class="error-message">Please enter a valid phone number</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required minlength="8">
+                        <div class="password-strength">
+                            <span class="strength-bar"></span>
+                            <span class="strength-bar"></span>
+                            <span class="strength-bar"></span>
+                            <span class="strength-text">Password Strength: <span>Weak</span></span>
+                        </div>
+                        <div class="error-message">Password must be at least 8 characters</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" id="confirm-password" name="confirm_password" required>
+                        <div class="error-message">Passwords do not match</div>
+                    </div>
+        
+                    <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                    
+                    <div class="auth-footer">
+                        Already have an account? <a href="login.html">Login here</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer (Same as login.html) -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>AutoHub</h4>
+                    <p>Your complete car marketplace with thousands of vehicles from trusted dealers.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="listings.html">Browse Cars</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 26th corridor, El-Sheikh Zayed City</p>
+                    <p><i class="fas fa-phone"></i> 01010166333</p>
+                    <p><i class="fas fa-envelope"></i> support@autohub.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AutoHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/theme-switcher.js"></script>
+    <script src="js/form-validation.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>
