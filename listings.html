@@ -37,15 +37,64 @@
             <h1 class="section-title">Available Cars</h1>
 
             <div class="cars-grid">
+            <div class="car-card">
+                    <div class="car-image">
+                        <img src="images/porsche-911.jpg" alt="Porsche 911 Carrera" 
+                             class="video-trigger" data-video="GmMQstRTpSE">
+                    </div>
+                    <div class="car-details">
+                        <h3>Porsche 911 Carrera</h3>
+                        <p>2022 Model | 3.0L Turbocharged</p>
+                        <div class="car-price">$120,000</div>
+                    </div>
+                </div>
             </div>
         </div>
+    
+        <div class="video-modal" id="videoModal">
+            <span class="close-modal">&times;</span>
+            <iframe id="videoFrame" src="" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
+        </div>
     </main>
-
+    
     <footer class="main-footer">
     </footer>
 
     <script src="js/main.js"></script>
     <script src="js/listings.js"></script>
     <script src="js/theme-switcher.js"></script>
+     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('videoModal');
+            const videoFrame = document.getElementById('videoFrame');
+            const closeBtn = document.querySelector('.close-modal');
+            const triggers = document.querySelectorAll('.video-trigger');
+            
+            // Open modal
+            triggers.forEach(trigger => {
+                trigger.addEventListener('click', function() {
+                    const videoId = this.getAttribute('data-video');
+                    videoFrame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                    modal.style.display = 'flex';
+                });
+            });
+            
+            // Close modal
+            closeBtn.addEventListener('click', function() {
+                videoFrame.src = '';
+                modal.style.display = 'none';
+            });
+            
+            // Close when clicking outside
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    videoFrame.src = '';
+                    modal.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
