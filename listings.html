@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Listings - AutoHub</title>
-     <style>
-        /* TEMPORARY IN-PAGE STYLES - Move to CSS file later */
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/theme-light.css" id="theme-style">
+    <style>
+        /* Video Modal Styles */
         .video-modal {
             display: none;
             position: fixed;
@@ -17,13 +20,14 @@
             z-index: 1000;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
         }
-        .video-modal iframe {
-            width: 80%;
-            height: 80%;
-            max-width: 800px;
-        }
+
+            .video-modal iframe {
+                width: 80%;
+                height: 80%;
+                max-width: 800px;
+            }
+
         .close-modal {
             position: absolute;
             top: 20px;
@@ -33,16 +37,95 @@
             cursor: pointer;
             z-index: 1001;
         }
-        .car-image img {
-            width: 300px;
-            height: auto;
-            cursor: pointer;
-            border: 1px solid #ccc;
+
+        /* Button Styles */
+        .button-container {
+            text-align: center;
+            margin: 30px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
         }
+
+        .watch-video-btn, .prices-table-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            min-width: 200px;
+            justify-content: center;
+        }
+
+        .watch-video-btn {
+            background-color: #007bff;
+        }
+
+            .watch-video-btn:hover {
+                background-color: #0056b3;
+            }
+
+        .prices-table-btn {
+            background-color: #28a745;
+        }
+
+            .prices-table-btn:hover {
+                background-color: #218838;
+            }
+
+            .watch-video-btn i, .prices-table-btn i {
+                margin-right: 8px;
+            }
+
+        /* Cars Table Styles */
+        .cars-table-container {
+            display: none;
+            width: 100%;
+            max-width: 800px;
+            margin: 30px auto;
+            overflow-x: auto;
+        }
+
+        .cars-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9em;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+
+            .cars-table thead tr {
+                background-color: #007bff;
+                color: #ffffff;
+                text-align: left;
+            }
+
+            .cars-table th,
+            .cars-table td {
+                padding: 12px 15px;
+            }
+
+            .cars-table tbody tr {
+                border-bottom: 1px solid #dddddd;
+            }
+
+                .cars-table tbody tr:nth-of-type(even) {
+                    background-color: #f3f3f3;
+                }
+
+                .cars-table tbody tr:last-of-type {
+                    border-bottom: 2px solid #007bff;
+                }
+
+                .cars-table tbody tr:hover {
+                    background-color: #f1f1f1;
+                }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/theme-light.css" id="theme-style">
 </head>
 <body>
     <header class="main-header">
@@ -72,62 +155,127 @@
         <div class="container">
             <h1 class="section-title">Available Cars</h1>
 
+            <!-- Buttons Container -->
+            <div class="button-container">
+                <button class="watch-video-btn" id="watchVideoBtn">
+                    <i class="fas fa-play"></i> Watch a review now
+                </button>
+                <button class="prices-table-btn" id="pricesTableBtn">
+                    <i class="fas fa-table"></i> Table for all cars and prices
+                </button>
+            </div>
+
+            <!-- Cars Table Container -->
+            <div class="cars-table-container" id="carsTableContainer">
+                <table class="cars-table">
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>Model</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Toyota</td>
+                            <td>Camry</td>
+                            <td>$25,000</td>
+                        </tr>
+                        <tr>
+                            <td>Honda</td>
+                            <td>Accord</td>
+                            <td>$26,000</td>
+                        </tr>
+                        <tr>
+                            <td>Ford</td>
+                            <td>Mustang</td>
+                            <td>$32,000</td>
+                        </tr>
+                        <tr>
+                            <td>Chevrolet</td>
+                            <td>Corvette</td>
+                            <td>$65,000</td>
+                        </tr>
+                        <tr>
+                            <td>BMW</td>
+                            <td>3 Series</td>
+                            <td>$43,000</td>
+                        </tr>
+                        <tr>
+                            <td>Mercedes-Benz</td>
+                            <td>C-Class</td>
+                            <td>$45,000</td>
+                        </tr>
+                        <tr>
+                            <td>Porsche</td>
+                            <td>911 Carrera</td>
+                            <td>$120,000</td>
+                        </tr>
+                        <tr>
+                            <td>Tesla</td>
+                            <td>Model 3</td>
+                            <td>$42,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
             <div class="cars-grid">
-            <div class="car-card">
-                    <div class="car-image">
-                        <img src="images/porsche-911.jpg" alt="Porsche 911 Carrera" 
-                             class="video-trigger" data-video="GmMQstRTpSE">
-                    </div>
-                    <div class="car-details">
-                        <h3>Porsche 911 Carrera</h3>
-                        <p>2022 Model | 3.0L Turbocharged</p>
-                        <div class="car-price">$120,000</div>
-                    </div>
-                </div>
             </div>
         </div>
-    
-        <div class="video-modal" id="videoModal">
-            <span class="close-modal">&times;</span>
-            <iframe id="videoFrame" src="" frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen></iframe>
-        </div>
     </main>
-    
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <span class="close-modal">&times;</span>
+        <iframe id="videoFrame" src="" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+    </div>
+
     <footer class="main-footer">
     </footer>
 
     <script src="js/main.js"></script>
     <script src="js/listings.js"></script>
     <script src="js/theme-switcher.js"></script>
-     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Video Modal functionality
             const modal = document.getElementById('videoModal');
             const videoFrame = document.getElementById('videoFrame');
             const closeBtn = document.querySelector('.close-modal');
-            const triggers = document.querySelectorAll('.video-trigger');
-            
-            // Open modal
-            triggers.forEach(trigger => {
-                trigger.addEventListener('click', function() {
-                    const videoId = this.getAttribute('data-video');
-                    videoFrame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-                    modal.style.display = 'flex';
-                });
+            const watchVideoBtn = document.getElementById('watchVideoBtn');
+
+            watchVideoBtn.addEventListener('click', function () {
+                videoFrame.src = "https://www.youtube.com/embed/GmMQstRTpSE?autoplay=1";
+                modal.style.display = 'flex';
             });
-            
-            // Close modal
-            closeBtn.addEventListener('click', function() {
+
+            closeBtn.addEventListener('click', function () {
                 videoFrame.src = '';
                 modal.style.display = 'none';
             });
-            
-            // Close when clicking outside
-            modal.addEventListener('click', function(e) {
+
+            modal.addEventListener('click', function (e) {
                 if (e.target === modal) {
                     videoFrame.src = '';
                     modal.style.display = 'none';
+                }
+            });
+
+            // Prices Table functionality
+            const pricesTableBtn = document.getElementById('pricesTableBtn');
+            const carsTableContainer = document.getElementById('carsTableContainer');
+
+            pricesTableBtn.addEventListener('click', function () {
+                if (carsTableContainer.style.display === 'block') {
+                    carsTableContainer.style.display = 'none';
+                    this.innerHTML = '<i class="fas fa-table"></i> Table for all cars and prices';
+                } else {
+                    carsTableContainer.style.display = 'block';
+                    this.innerHTML = '<i class="fas fa-times"></i> Close table';
                 }
             });
         });
